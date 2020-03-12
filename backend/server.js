@@ -6,7 +6,10 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 require("dotenv").config();
+
+//Import Routes
 const BlogRoutes = require("./routes/blog");
+const authRoutes = require("./routes/auth");
 
 //App
 const app = express();
@@ -31,6 +34,7 @@ mongoose
   .then(() => console.log("DB connected Successfuly"));
 
 app.use("/api", BlogRoutes);
+app.use("/api", authRoutes);
 //Routes
 app.get("/", (req, res) => {
   res.json({ Name: "Asem" });
